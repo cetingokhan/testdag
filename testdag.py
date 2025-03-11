@@ -17,12 +17,11 @@ with DAG('sample_100_tasks_dag', default_args=default_args, schedule_interval='@
     for i in range(1, 101):
         task = KubernetesPodOperator(
                 task_id=f'task_{i}',
-                name='run_python_command',
+                name=f'task_{i}',
                 namespace='default',
                 image='python:3.8-slim',
                 cmds=["python", "-c"],
                 arguments=["print('Hello from the Python base image!')"],
-                is_delete_operator_pod=True,
                 get_logs=True,
             )
 

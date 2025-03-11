@@ -1,7 +1,7 @@
 from airflow import DAG
 from airflow.operators.dummy import DummyOperator
 from datetime import datetime
-from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import 
+from airflow.providers.cncf.kubernetes.operators.job import KubernetesPodOperator
 
 default_args = {
     'owner': 'airflow',

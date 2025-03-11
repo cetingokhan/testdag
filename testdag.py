@@ -18,7 +18,7 @@ with DAG('sample_100_tasks_dag', default_args=default_args, schedule_interval='@
         task = KubernetesPodOperator(
                 task_id=f'task_{i}',
                 name=f'task_{i}',
-                namespace='default',
+                namespace='airflow',
                 image='python:3.8-slim',
                 cmds=["python", "-c"],
                 arguments=["print('Hello from the Python base image!')"],

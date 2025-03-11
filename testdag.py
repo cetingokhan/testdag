@@ -9,7 +9,7 @@ default_args = {
     'retries': 1
 }
 
-with DAG('sample_100_tasks_dag', default_args=default_args, schedule_interval='@daily', concurrency=100, catchup=False) as dag:
+with DAG('sample_100_tasks_dag', default_args=default_args, schedule_interval='@daily', catchup=False) as dag:
     
     start = DummyOperator(task_id='start')
     
@@ -23,6 +23,7 @@ with DAG('sample_100_tasks_dag', default_args=default_args, schedule_interval='@
                 cmds=["python", "-c"],
                 arguments=["print('Hello from the Python base image!')"],
                 get_logs=True,
+                queue='kubernetes'
             )
 
 
